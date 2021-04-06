@@ -22,3 +22,26 @@ npm -v
 ```bash
 sudo npm i --global yarn
 ```
+
+## Executando o hello world
+Para executar qualquer programa Node basta passar o seguinte comando
+```bash
+node [nome_do_arquivo]
+```
+E para executar o hello world
+```bash
+node Modulo01/HelloWorld.js
+```
+## Modulos do NodeJS
+Módulos são fatias de um programa. Ou seja, é uma forma de de vividir sua aplicação em partes.
+Modules precisam ser exportados com o comando *module.exports* e ser importado com *require('nome_do_arquivo')*
+Também posso exportar multiplas funções usando um objeto
+```javascript
+function funcao01(){}
+function funcao02(){}
+
+module.exports = {
+  funcao01,
+  funcao02
+}
+```
