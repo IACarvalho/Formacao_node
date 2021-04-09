@@ -1,4 +1,5 @@
-# FOrmação NodeJS
+# Formação NodeJS
+## Anotações feitas durante o curso
 
 ## O que é o NodeJS
 NodeJS é um interpretador Javaxrip escrito em C++ que permite executar o código javascript fora dos naegadores
@@ -45,3 +46,10 @@ module.exports = {
   funcao02
 }
 ```
+
+## O que é HTTP?
+É um protocolo de transferência de dados na web. Só é possivel fazer uma comunicação cliente servidor graças ao http.
+O protocola HTTP funciona através de requisições e respostas. (O cliente manda uma requisição e o servidor manda uma resposta)
+
+
+## O que é Express.js?
