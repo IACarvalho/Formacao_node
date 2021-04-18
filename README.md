@@ -189,3 +189,89 @@ app.post('/user/signup', (request, response) => {
 
   return response.send('Usuário inserido com sucesso')
 })
+```
+## Curso bonus de mysql
+### instalar o Mysql no docker e usando no DBeaver
+**IMPORTANTE** usarei o mysql rodando em um container
+```bash
+docker run --name=mysqlCourse -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -v ~/home/israel/Desktop/mysqlCourse:/var/lib/mysql mysql:5.7
+```
+**O mysql estará rodando na porta 3306**
+```bash
+# Para descobrir o ID do contianer
+docker container ls # mostrará todos os contaienrs sendo executados
+# Pra descobrir o IP do container
+docker container inspect # IP do contiaqner
+```
+Com o IP e a porta bas clicar em adicionar nova conexão no DBeaver e trocar localhost pelo IP do container
+
+### Conseitos
+* **Entidade**: Algo de interesse para a comunidade de usuários do banco de dados. Exemplos incluem clientes, partes, localizações geográficas etc.
+* **Coluna**: Um dado armazenado em uma tabela
+* **Linha**: Um conjunto de colunas que, coletivamente descreve de forma completa uma entidade ou alguma ação em uma entidade. Também chamada de **registro**.
+* **Tabela**: Um conjunto de linhas, mantidas em memória volátil (não-persistente) ou em armazenamento permanente (persistente).
+* **Conjunto-resultado**: Outro nome para uma tabela não-persistente, geralmente o resultado de uma consulta SQL.
+* **Chave primária**: Uma ou mais colunas que podem ser usadas como identificadorúnico de cada linhas em uma tabela.
+* **Chave estrangeira**: Uma ou mais colunas que podem ser usadas em conjunto para identicar uma única linha em outra tabela.
+
+### Tipos de dados do MysQL
+* **Tipo caractere**: CHAR, CHARSET
+* **Tipo texto**: TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT
+* **Tipo númerico**: TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT,  FLOAT, DOUBLE
+* **Tipo temporal**: DATE, DATETIME, TIMESTAMP, YEAR, TIME
+
+### Manipulando as tabelas
+
+#### Criação de tabela
+
+```sql
+CREATE TABLE users( -- Primeiro declara o nome da tabebela
+	id INT PRIMARY KEY AUTOINCREMENT, -- Depois passa os nomes e tipos das colunas dentro de parenteses
+	name VARCHAR(50),
+	email VARCHAR(100),
+	age INT
+); -- Ao final do comando fecha com ;(ponto e vírgula)
+```
+
+#### Insersão de dados
+
+```sql
+INSERT INTO users ( name, email, age ) -- A tabela onde os dados serão inseridos e os campos
+VALUES( -- Valores na mesma ordem listada
+    "Fulano",
+    "Fulano@email.com",
+    26
+);
+```
+
+#### Seleção (busca)
+
+```sql
+SELECT name, -- Os campos que serão consultados
+	email,
+	age
+FROM users -- Tabela de onde serão buscados
+WHERE name = "Fulano" -- COndição, mas não é obrigatória
+
+-- consulta buscanto TODOS as colunas
+SELECT * FROM users
+WHERE name = "Ciclano"
+```
+
+#### Deletar dados
+
+```sql
+DELETE FROM users -- Tabela de onde será removido os dados
+WHERE name = "Ciclano" -- Condição
+/* IMPORTANTE se não colocar a clausula WHERE todos os dados serão deletados */
+```
+
+#### Atulização/Modificação de informações
+
+```sql
+UPDATE users -- Tabela onde será feio a ataulização
+SET name = "Fulano da Silva" -- Campo que será atualizado
+WHERE id = 1 -- Condição
+/* IMPORTANTE se não passar uma condição todos os dados do campo na tabela serão modificados */
+```
+
